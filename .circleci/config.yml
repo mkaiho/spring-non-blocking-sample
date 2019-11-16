@@ -5,7 +5,7 @@ jobs:
       _JAVA_OPTIONS: "-Xmx3g"
       GRADLE_OPTS: "-Dorg.gradle.daemon=false"
     docker:
-      - image: circleci/openjdk:13.0.1-jdk-buster
+      - image: circleci/openjdk:11-jdk
     steps:
       - checkout
       - restore_cache:
