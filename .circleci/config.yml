@@ -3,7 +3,7 @@ jobs:
   build:
     environment:
       _JAVA_OPTIONS: "-Xmx3g"
-      GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+      GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
     docker:
       - image: circleci/openjdk:11-jdk
     steps:
@@ -30,9 +30,9 @@ jobs:
   test:
     environment:
       _JAVA_OPTIONS: "-Xmx3g"
-      GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+      GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
     docker:
-      - image: circleci/openjdk:13.0.1-jdk-buster
+      - image: circleci/openjdk:11-jdk
     steps:
       - checkout
       - attach_workspace:
@@ -66,7 +66,7 @@ jobs:
           path: build/libs
 
 workflows:
-  version: 2
+  version: 2.1
   workflow:
     jobs:
     - build
