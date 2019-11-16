@@ -4,6 +4,9 @@ plugins {
 	id 'java'
 }
 
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'jacoco'
+
 group = 'com.example.learning'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -22,3 +25,12 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
+}
+
+check.dependsOn jacocoTestReport
